@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目展示 - 个人博客</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://api.yimian.xyz/img?type=moe&size=1920x1080') no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .nav li {
+            margin: 0 1.5rem;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #1e3c72;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: #f0f0f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: #1e3c72;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-link i {
+            font-size: 1.2rem;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav li {
+                margin: 0.5rem 0;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>项目展示</h1>
+            <p>探索我的作品集</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="blog.html">首页</a></li>
+            <li><a href="articles.html">文章</a></li>
+            <li><a href="projects.html">项目</a></li>
+            <li><a href="about.html">关于我</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="projects-grid">
+            <article class="project-card">
+                <img src="https://api.yimian.xyz/img?type=moe&size=400x300" alt="项目截图" class="project-image">
+                <div class="project-content">
+                    <h2 class="project-title">智能客服系统</h2>
+                    <p class="project-description">
+                        基于机器学习的智能客服系统，支持自然语言处理、情感分析和自动回复功能。
+                        系统采用微服务架构，实现了高可用性和可扩展性。
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Kubernetes</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i>🌐</i> 在线演示
+                        </a>
+                        <a href="#" class="project-link">
+                            <i>📦</i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <img src="https://api.yimian.xyz/img?type=moe&size=400x300" alt="项目截图" class="project-image">
+                <div class="project-content">
+                    <h2 class="project-title">电商数据分析平台</h2>
+                    <p class="project-description">
+                        基于大数据技术的电商数据分析平台，提供销售趋势分析、用户行为分析和商品推荐功能。
+                        支持实时数据监控和可视化展示。
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">D3.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i>🌐</i> 在线演示
+                        </a>
+                        <a href="#" class="project-link">
+                            <i>📦</i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <img src="https://api.yimian.xyz/img?type=moe&size=400x300" alt="项目截图" class="project-image">
+                <div class="project-content">
+                    <h2 class="project-title">个人博客系统</h2>
+                    <p class="project-description">
+                        使用现代前端技术栈开发的个人博客系统，支持文章管理、评论系统和响应式设计。
+                        采用前后端分离架构，提供良好的用户体验。
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Redis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i>🌐</i> 在线演示
+                        </a>
+                        <a href="#" class="project-link">
+                            <i>📦</i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 我的个人博客. All rights reserved.</p>
+    </footer>
+</body>
+</html> 

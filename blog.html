@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客 - 首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://api.yimian.xyz/img?type=moe&size=1920x1080') no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .nav li {
+            margin: 0 1.5rem;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #1e3c72;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .featured-posts {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+
+        .post {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .post:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .post-title {
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-excerpt {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: #1e3c72;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .widget {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+        }
+
+        .widget-title {
+            color: #1e3c72;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .widget-content {
+            color: #666;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #666;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: #1e3c72;
+            color: white;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav li {
+                margin: 0.5rem 0;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>我的个人博客</h1>
+            <p>分享技术，记录生活</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="blog.html">首页</a></li>
+            <li><a href="articles.html">文章</a></li>
+            <li><a href="projects.html">项目</a></li>
+            <li><a href="about.html">关于我</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="main-content">
+            <main class="featured-posts">
+                <article class="post">
+                    <h2 class="post-title">深入理解JavaScript闭包</h2>
+                    <div class="post-meta">
+                        <span>2024-03-21</span> | 
+                        <span>技术分享</span>
+                    </div>
+                    <p class="post-excerpt">本文深入探讨JavaScript闭包的概念、原理和应用场景，帮助你更好地理解和使用闭包...</p>
+                    <a href="articles.html" class="read-more">阅读更多 →</a>
+                </article>
+
+                <article class="post">
+                    <h2 class="post-title">Python数据分析实战</h2>
+                    <div class="post-meta">
+                        <span>2024-03-20</span> | 
+                        <span>技术分享</span>
+                    </div>
+                    <p class="post-excerpt">使用Python进行数据分析的完整指南，包括数据处理、可视化和机器学习应用...</p>
+                    <a href="articles.html" class="read-more">阅读更多 →</a>
+                </article>
+
+                <article class="post">
+                    <h2 class="post-title">前端工程化实践</h2>
+                    <div class="post-meta">
+                        <span>2024-03-19</span> | 
+                        <span>技术分享</span>
+                    </div>
+                    <p class="post-excerpt">探讨现代前端工程化的最佳实践，包括构建工具、自动化测试和持续集成...</p>
+                    <a href="articles.html" class="read-more">阅读更多 →</a>
+                </article>
+            </main>
+
+            <aside class="sidebar">
+                <div class="widget">
+                    <h3 class="widget-title">关于我</h3>
+                    <div class="widget-content">
+                        <p>我是一名全栈开发工程师，热爱技术分享和写作。在这里，我会分享我的技术心得、项目经验和生活感悟。</p>
+                        <a href="about.html" class="read-more">了解更多 →</a>
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <h3 class="widget-title">最新项目</h3>
+                    <div class="widget-content">
+                        <p>智能客服系统、电商数据分析平台、个人博客系统等项目的详细介绍。</p>
+                        <a href="projects.html" class="read-more">查看项目 →</a>
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <h3 class="widget-title">标签云</h3>
+                    <div class="widget-content">
+                        <div class="tag-cloud">
+                            <a href="articles.html" class="tag">JavaScript</a>
+                            <a href="articles.html" class="tag">Python</a>
+                            <a href="articles.html" class="tag">React</a>
+                            <a href="articles.html" class="tag">Node.js</a>
+                            <a href="articles.html" class="tag">机器学习</a>
+                            <a href="articles.html" class="tag">Web开发</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 我的个人博客. All rights reserved.</p>
+    </footer>
+</body>
+</html> 

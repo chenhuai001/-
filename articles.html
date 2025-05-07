@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章列表 - 个人博客</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://api.yimian.xyz/img?type=moe&size=1920x1080') no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .nav li {
+            margin: 0 1.5rem;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #1e3c72;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-title {
+            color: #1e3c72;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-excerpt {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: #1e3c72;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        .category-filter {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .category-btn {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: #1e3c72;
+            color: white;
+            border-color: #1e3c72;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav li {
+                margin: 0.5rem 0;
+            }
+
+            .category-filter {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .category-btn {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>文章列表</h1>
+            <p>探索更多精彩内容</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="blog.html">首页</a></li>
+            <li><a href="articles.html">文章</a></li>
+            <li><a href="projects.html">项目</a></li>
+            <li><a href="about.html">关于我</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="category-filter">
+            <button class="category-btn active">全部</button>
+            <button class="category-btn">技术分享</button>
+            <button class="category-btn">生活随笔</button>
+            <button class="category-btn">项目经验</button>
+            <button class="category-btn">学习笔记</button>
+        </div>
+
+        <div class="articles-grid">
+            <article class="article-card">
+                <img src="https://api.yimian.xyz/img?type=moe&size=400x300" alt="文章配图" class="article-image">
+                <div class="article-content">
+                    <h2 class="article-title">深入理解JavaScript闭包</h2>
+                    <div class="article-meta">
+                        <span>2024-03-21</span> | 
+                        <span>技术分享</span>
+                    </div>
+                    <p class="article-excerpt">本文深入探讨JavaScript闭包的概念、原理和应用场景，帮助你更好地理解和使用闭包...</p>
+                    <a href="#" class="read-more">阅读更多 →</a>
+                </div>
+            </article>
+
+            <article class="article-card">
+                <img src="https://api.yimian.xyz/img?type=moe&size=400x300" alt="文章配图" class="article-image">
+                <div class="article-content">
+                    <h2 class="article-title">Python数据分析实战</h2>
+                    <div class="article-meta">
+                        <span>2024-03-20</span> | 
+                        <span>技术分享</span>
+                    </div>
+                    <p class="article-excerpt">使用Python进行数据分析的完整指南，包括数据处理、可视化和机器学习应用...</p>
+                    <a href="#" class="read-more">阅读更多 →</a>
+                </div>
+            </article>
+
+            <article class="article-card">
+                <img src="https://api.yimian.xyz/img?type=moe&size=400x300" alt="文章配图" class="article-image">
+                <div class="article-content">
+                    <h2 class="article-title">前端工程化实践</h2>
+                    <div class="article-meta">
+                        <span>2024-03-19</span> | 
+                        <span>技术分享</span>
+                    </div>
+                    <p class="article-excerpt">探讨现代前端工程化的最佳实践，包括构建工具、自动化测试和持续集成...</p>
+                    <a href="#" class="read-more">阅读更多 →</a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 我的个人博客. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // 分类筛选功能
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html> 
